@@ -1,7 +1,9 @@
 var express = require("express");
 var app = express();
 var request = require("request");
+const port = 3000;
 const apiKey = "thewdb";
+
 app.set("view engine", "ejs");
 
 app.get("/", function(req, res) {
@@ -29,6 +31,6 @@ app.get("*", function(req, res) {
     res.send("Page not found :("); 
 });
 
-app.listen(3000, function(){
+app.listen(port, function(){
     console.log('localhost:3000');
 });
