@@ -1,6 +1,8 @@
+<% include partials/header %>
+
 <h1>Search for a movie</h1>
 
-<form method="get", action="/results">
+<form method="get", action="/imdb_results">
     <label>Film:</label>
     <input type="text", placeholder="name" name="filmName">
     <br>
@@ -8,3 +10,5 @@
     <br>
     <input type="submit">
 </form>
+
+<% include partials/footer %>

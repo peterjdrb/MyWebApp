@@ -5,16 +5,17 @@ const port = 3000;
 const apiKey = "thewdb";
 
 app.set("view engine", "ejs");
+app.use(express.static("public"));
 
 app.get("/", function(req, res) {
     res.render("home"); 
 });
 
-app.get("/search", function(req, res) {
-    res.render("search"); 
+app.get("/imdb_search", function(req, res) {
+    res.render("imdb_search"); 
 });
 
-app.get("/results", function(req, res) {
+app.get("/imdb_results", function(req, res) {
     var filmName = req.query.filmName;
     var url = "http://www.omdbapi.com/?s=" + filmName + "&apikey=" + apiKey;
     request(url, function(error, response, body){
@@ -25,7 +26,6 @@ app.get("/results", function(req, res) {
         }
     });
 });
-
 
 app.get("*", function(req, res) {
     res.send("Page not found :("); 
