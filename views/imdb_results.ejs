@@ -1,7 +1,7 @@
 <%include partials/header%>
 <link rel="stylesheet" href="/css/movies.css">
 
-<h2>Number of results: <%= results.Search.length;%></h2>
+<h2>Number of results: <%= results.length;%></h2>
 
 
 <table id="imdb_results">
@@ -11,7 +11,7 @@
         <th>Year</th>
         <th>Type</th>
     </tr>
-    <% results.Search.forEach(function(movie) {%>
+    <% results.forEach(function(movie) {%>
         <tr>
             <td> <%= movie.imdbID %> </td>
             <td> <%= movie.Title;%></a> </td>

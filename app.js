@@ -31,11 +31,31 @@ app.get("/imdb_results", function(req, res) {
             if (results.Response === "False"){
                 res.render("imdb_search", {error:results});
             } else {
-                res.render("imdb_results", {results:results});
+                var resultsToDisplay = getIMDbSearchResults(results.Search);
+                // console.log(resultsToDisplay);
+                res.render("imdb_results", {results:resultsToDisplay});
             }
         }
     });
 });
+
+function getIMDbSearchResults(searchResults) {
+    for (var i = 0; i<searchResults.length; i++) {
+        var movieID = searchResults[i].imdbID;
+        var url = "http://www.omdbapi.com/?i=" + movieID + "&apikey=" + apiKey;
+        request(url, function(error, response, body) {
+            if(!error && response.statusCode === 200) {
+                var retrievedMovie = JSON.parse(body);
+                console.log(searchResults[i]);
+                console.log(retrievedMovie);
+                searchResults[i].Plot = retrievedMovie.Plot;
+
+        
+            }
+        });
+    }
+    return searchResults;
+};
 
 app.get("*", function(req, res) {
     res.send("Page not found :("); 
