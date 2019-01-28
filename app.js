@@ -21,8 +21,12 @@ app.get("/imdb_results", function(req, res) {
     request(url, function(error, response, body){
         if(!error && response.statusCode === 200) {
             var results = JSON.parse(body);
-            console.log(results);
-            res.render("imdb_results", {results:results});
+            if (results.Response === "False"){
+                res.render("imdb_search", {error:results});
+            } else {
+                res.render("imdb_results", {results:results});
+            }
+            
         }
     });
 });

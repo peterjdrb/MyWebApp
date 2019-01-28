@@ -2,9 +2,13 @@
 
 <h1>Search for a movie</h1>
 
+<% if (typeof error !== "undefined" && error.Response === "False") { %>
+    <h2><%= error.Error;%></h2>
+<% }; %>
+
 <form method="get", action="/imdb_results">
     <label>Film:</label>
-    <input type="text", placeholder="name" name="filmName" required minlength=3>
+    <input type="text", placeholder="name" name="filmName" required >
     <br>
     <label>Year:</label>
     <br>
