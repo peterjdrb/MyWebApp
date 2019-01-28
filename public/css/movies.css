@@ -1,7 +1,7 @@
 #page input[type] {
     margin-bottom: 5px;
     margin-right: 24px;
-    border: 1px solid gray;
+    border: 1px solid #AAAAAA;
 }
 
 #page input[type=text] {
@@ -10,4 +10,26 @@
 
 #page input[type=number] {
     width: 50px;
+}
+
+#imdb_results th {
+	padding: 3px 3px 3px 3px;
+	font-weight: bold;
+}
+
+#imdb_results{
+	margin-bottom: 0;
+	padding: 0;
+	border-collapse: collapse;
+	
+}
+
+#imdb_results tr:nth-of-type(even){
+	background: #FFFFFF;
+	border: 1px solid #FFFFFF;
+}
+
+#imdb_results tr:nth-of-type(odd){
+	background: #CCCCCC;
+		border: 1px solid #CCCCCC;
 }

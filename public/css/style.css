@@ -1,5 +1,6 @@
 body {
 	margin: 0;
+	background: #CCCCCC;
 }
 
 #page {
@@ -28,8 +29,5 @@ body {
 
 #navBar li a:hover {
 	background-color: #111;
-}
-
-#imdb_search label {
-	
+	font-weight: bold;
 }
