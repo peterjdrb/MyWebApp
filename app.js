@@ -33,7 +33,6 @@ app.get("/imdb_results", function(req, res) {
             } else {
                 res.render("imdb_results", {results:results});
             }
-            
         }
     });
 });

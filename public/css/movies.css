@@ -1,31 +1,35 @@
-body {
-	margin: 0;
+#page input[type] {
+    margin-bottom: 5px;
+    margin-right: 24px;
+    border: 1px solid #AAAAAA;
 }
 
-#page {
-	margin-left: 10px;
+#page input[type=text] {
+    width: 200px;   
 }
 
-#navBar ul {
-	list-style-type: none;
-	margin: 0;
+#page input[type=number] {
+    width: 50px;
+}
+
+#imdb_results th {
+	padding: 3px 3px 3px 3px;
+	font-weight: bold;
+}
+
+#imdb_results{
+	margin-bottom: 0;
 	padding: 0;
-	overflow: hidden;
-	background-color: #333;
+	border-collapse: collapse;
+	
 }
 
-#navBar li {
-	float: left;
+#imdb_results tr:nth-of-type(even){
+	background: #FFFFFF;
+	border: 1px solid #FFFFFF;
 }
 
-#navBar li a {
-	display: block;
-	color: white;
-	text-align: center;
-	padding: 14px 16px;
-	text-decoration: none;
-}
-
-#navBar li a:hover {
-	background-color: #111;
+#imdb_results tr:nth-of-type(odd){
+	background: #CCCCCC;
+		border: 1px solid #CCCCCC;
 }

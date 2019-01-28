@@ -1,24 +1,23 @@
 <%include partials/header%>
+<link rel="stylesheet" href="/css/movies.css">
 
-<h1>Results Page</h1>
 <h2>Number of results: <%= results.Search.length;%></h2>
 
 
-<table>
+<table id="imdb_results">
     <tr>
-        <td>Title</td>
-        <td>Year</td>
-        <td>Type</td>
+        <th>IMDb Id</th>
+        <th>Title</th>
+        <th>Year</th>
+        <th>Type</th>
     </tr>
     <% results.Search.forEach(function(movie) {%>
-        <form method="get", action="/movieSearch">
-            <tr>
-                <td> <%= movie.imdbID %> </td>
-                <td> <%= movie.Title;%></a> </td>
-                <td> <%= movie.Year;%> </td>
-                <td> <%= movie.Type;%> </td>
-            </tr>
-        </form>
+        <tr>
+            <td> <%= movie.imdbID %> </td>
+            <td> <%= movie.Title;%></a> </td>
+            <td> <%= movie.Year;%> </td>
+            <td> <%= movie.Type;%> </td>
+        </tr>
     <% }); %>
 </table>
 
