@@ -17,7 +17,14 @@ app.get("/imdb_search", function(req, res) {
 
 app.get("/imdb_results", function(req, res) {
     var filmName = req.query.filmName;
-    var url = "http://www.omdbapi.com/?s=" + filmName + "&apikey=" + apiKey;
+    var filmYear = req.query.filmYear;
+    
+    if (filmYear === "") {
+        var url = "http://www.omdbapi.com/?s=" + filmName + "&apikey=" + apiKey;
+    } else {
+        var url = "http://www.omdbapi.com/?s=" + filmName + "&y=" + filmYear +"&apikey=" + apiKey;
+    }
+    
     request(url, function(error, response, body){
         if(!error && response.statusCode === 200) {
             var results = JSON.parse(body);
@@ -32,5 +39,5 @@ app.get("*", function(req, res) {
 });
 
 app.listen(port, function(){
-    console.log('localhost:3000');
+    console.log('https://udemy-peterjdrb.c9users.io/');
 });
