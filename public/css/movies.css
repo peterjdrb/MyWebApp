@@ -12,6 +12,12 @@
     width: 50px;
 }
 
+#Category label {
+	display: inline-block;
+	width: 60px;
+	text-align: left;
+}
+
 #imdb_results th {
 	padding: 3px 3px 3px 3px;
 	font-weight: bold;

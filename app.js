@@ -16,14 +16,18 @@ app.get("/imdb_search", function(req, res) {
 });
 
 app.get("/imdb_results", function(req, res) {
-    var filmName = req.query.filmName;
-    var filmYear = req.query.filmYear;
+    var name = req.query.name;
+    var year = req.query.filmYear;
+    var category = req.query.category;
     
-    if (filmYear === "") {
-        var url = "http://www.omdbapi.com/?s=" + filmName + "&apikey=" + apiKey;
-    } else {
-        var url = "http://www.omdbapi.com/?s=" + filmName + "&y=" + filmYear +"&apikey=" + apiKey;
+    var url = "http://www.omdbapi.com/?s=" + name;
+    if (year !== "") {
+        url = url +"&y=" + year;
+    } 
+    if (category !== "any") {
+        url = url + "&type=" + category;
     }
+    url = url +"&apikey=" + apiKey;
     
     request(url, function(error, response, body){
         if(!error && response.statusCode === 200) {
