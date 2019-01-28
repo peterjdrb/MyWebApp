@@ -22,7 +22,7 @@ app.get("/imdb_results", function(req, res) {
         if(!error && response.statusCode === 200) {
             var results = JSON.parse(body);
             console.log(results);
-            res.render("results", {results:results});
+            res.render("imdb_results", {results:results});
         }
     });
 });

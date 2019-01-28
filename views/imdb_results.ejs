@@ -3,6 +3,7 @@
 <h1>Results Page</h1>
 <h2>Number of results: <%= results.Search.length;%></h2>
 
+
 <table>
     <tr>
         <td>Title</td>
@@ -10,13 +11,17 @@
         <td>Type</td>
     </tr>
     <% results.Search.forEach(function(movie) {%>
-        <tr>
-            <td> <%= movie.Title;%> </td>
-            <td> <%= movie.Year;%> </td>
-            <td> <%= movie.Type;%> </td>
-        </tr>
-    <%}); %>
+        <form method="get", action="/movieSearch">
+            <tr>
+                <td> <%= movie.imdbID %> </td>
+                <td> <%= movie.Title;%></a> </td>
+                <td> <%= movie.Year;%> </td>
+                <td> <%= movie.Type;%> </td>
+            </tr>
+        </form>
+    <% }); %>
 </table>
+
 
 <a href="/imdb_search">Search Again!</a>
 
