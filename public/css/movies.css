@@ -1,6 +1,12 @@
-#page input[type] {
+#page input {
     margin-bottom: 5px;
     margin-right: 24px;
+    border: 1px solid #AAAAAA;
+}
+
+#page input[type=radio] {
+    margin-bottom: 5px;
+    margin-right: 5px;
     border: 1px solid #AAAAAA;
 }
 
