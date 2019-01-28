@@ -7,6 +7,7 @@
     <input type="text", placeholder="name" name="filmName" required minlength=3>
     <br>
     <label>Year:</label>
+    <input type="number", placeholder="year" name="filmYear" min="1900" max="<%= new Date().getFullYear()+5;%>">
     <br>
     <input type="submit">
 </form>
