@@ -1,21 +1,21 @@
 #page input {
     margin-bottom: 5px;
     margin-right: 24px;
-    border: 1px solid #AAAAAA;
+    border: 1px solid #aaaaaa;
 }
 
 #page input[type=radio] {
     margin-bottom: 5px;
     margin-right: 5px;
-    border: 1px solid #AAAAAA;
+    border: 1px solid #aaaaaa;
 }
 
 #page input[type=text] {
-    width: 200px;   
+	width: 200px;   
 }
 
 #page input[type=number] {
-    width: 50px;
+	width: 50px;
 }
 
 #Category label {
@@ -29,19 +29,18 @@
 	font-weight: bold;
 }
 
-#imdb_results{
+#imdb_results {
 	margin-bottom: 0;
 	padding: 0;
 	border-collapse: collapse;
-	
 }
 
-#imdb_results tr:nth-of-type(even){
-	background: #FFFFFF;
-	border: 1px solid #FFFFFF;
+#imdb_results tr:nth-of-type(even) {
+	background: #ffffff;
+	border: 1px solid #ffffff;
 }
 
-#imdb_results tr:nth-of-type(odd){
-	background: #CCCCCC;
-		border: 1px solid #CCCCCC;
+#imdb_results tr:nth-of-type(odd) {
+	background: #cccccc;
+	border: 1px solid #cccccc;
 }
