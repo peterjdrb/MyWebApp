@@ -39,5 +39,5 @@ app.get("*", function(req, res) {
 });
 
 app.listen(port, function(){
-    console.log('https://udemy-peterjdrb.c9users.io/');
+    console.log('localhost:3000/');
 });
