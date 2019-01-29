@@ -3,6 +3,10 @@ body {
 	background: #ccc;
 }
 
+h1 {
+	text-align: center;
+}
+
 #page {
 	margin-left: 10px;
 }
@@ -32,6 +36,6 @@ body {
 	font-weight: bold;
 }
 
-#page img{
+#page img {
 	width: 100%;
 }
