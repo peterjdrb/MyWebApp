@@ -2,7 +2,8 @@ var express = require("express");
 var app = express();
 var request = require("request");
 const port = 3000;
-const apiKey = "thewdb";
+const moviAPIurl = "http://www.omdbapi.com/";
+const apiKey = "&apikey=thewdb";
 
 app.set("view engine", "ejs");
 app.use(express.static("public"));
@@ -20,14 +21,14 @@ app.get("/imdb_results", function(req, res) {
     var year = req.query.filmYear;
     var category = req.query.category;
     
-    var url = "http://www.omdbapi.com/?s=" + name;
+    var url = moviAPIurl + "?s=" + name;
     if (year !== "") {
         url = url +"&y=" + year;
     } 
     if (category !== "any") {
         url = url + "&type=" + category;
     }
-    url = url +"&apikey=" + apiKey;
+    url = url + apiKey;
     
     request(url, function(error, response, body){
         if(!error && response.statusCode === 200) {
@@ -42,7 +43,15 @@ app.get("/imdb_results", function(req, res) {
 });
 
 app.get("/IMDb_page/:id", function(req, res){
-   res.render("imdb_page");
+    var imdb_id = req.params.id;
+    var url = moviAPIurl + "?i=" + imdb_id + "&plot=full" + apiKey;
+    
+    request(url, function(error, response, body){
+        if(!error && response.statusCode === 200) {
+            var results = JSON.parse(body);
+            res.render("imdb_page", {results:results});
+        }
+    });
 });
 
 app.get("*", function(req, res) {

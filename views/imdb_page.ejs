@@ -1,5 +1,21 @@
 <%include partials/header %>
+    <link 
+    	rel="stylesheet"
+    	href="/css/movie.css">
+<h1><%=results.Title %></h1>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 pink col-md-6 col-sm-6">
+            <img src="<%=results.Poster%>">
+        </div>
+        <div class="col-lg-6">
+            <p1><strong>Released:</strong> <%=results.Released %></p1><br>
+            <p1><strong>Rating:</strong> <%=results.Rated %></p1><br>
+            <h2><strong>Plot:</strong></h2>
+            <p><%=results.Plot %></p>
+        </div>
+    </div>
+</div>
 
-<h1>imdb_page</h1>
 
 <%include partials/footer %>
