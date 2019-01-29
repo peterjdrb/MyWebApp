@@ -1,13 +1,13 @@
 #page input {
     margin-bottom: 5px;
     margin-right: 24px;
-    border: 1px solid #aaaaaa;
+    border: 1px solid #aaa;
 }
 
 #page input[type=radio] {
     margin-bottom: 5px;
     margin-right: 5px;
-    border: 1px solid #aaaaaa;
+    border: 1px solid #aaa;
 }
 
 #page input[type=text] {
@@ -36,11 +36,11 @@
 }
 
 #imdb_results tr:nth-of-type(even) {
-	background: #ffffff;
-	border: 1px solid #ffffff;
+	background: #fff;
+	border: 1px solid #fff;
 }
 
 #imdb_results tr:nth-of-type(odd) {
-	background: #cccccc;
-	border: 1px solid #cccccc;
+	background: #ccc;
+	border: 1px solid #ccc;
 }
