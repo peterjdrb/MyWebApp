@@ -42,7 +42,7 @@ app.get("/imdb_results", function(req, res) {
     });
 });
 
-app.get("/IMDb_page/:id", function(req, res){
+app.get("/imdb_page/:id", function(req, res){
     var imdb_id = req.params.id;
     var url = moviAPIurl + "?i=" + imdb_id + "&plot=full" + apiKey;
     
