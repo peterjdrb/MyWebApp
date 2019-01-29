@@ -5,15 +5,17 @@
 
 <table id="imdb_results">
     <tr>
+        <th>Poster</th>
         <th>Title</th>
         <th>Year</th>
         <th>Type</th>
     </tr>
     <% results.Search.forEach(function(movie) {%>
         <tr onclick="window.location.href = '/imdb_page/<%= movie.imdbID %>';">
-            <td> <%= movie.Title;%></a> </td>
-            <td> <%= movie.Year;%> </td>
-            <td> <%= movie.Type;%> </td>
+            <td><img src="<%=movie.Poster%>"></td>
+            <td><%= movie.Title;%></a> </td>
+            <td><%= movie.Year;%></td>
+            <td><%= movie.Type;%></td>
         </tr>
     <% }); %>
 </table>
