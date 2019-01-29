@@ -41,6 +41,10 @@ app.get("/imdb_results", function(req, res) {
     });
 });
 
+app.get("/IMDb_page/:id", function(req, res){
+   res.render("imdb_page");
+});
+
 app.get("*", function(req, res) {
     res.send("Page not found :("); 
 });
