@@ -4,6 +4,10 @@
     border: 1px solid #aaa;
 }
 
+#page p {
+	margin: 0 0;
+}
+
 #page input[type=radio] {
     margin-bottom: 5px;
     margin-right: 5px;
