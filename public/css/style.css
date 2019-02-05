@@ -1,6 +1,10 @@
 body {
 	margin: 0;
-	background: #CCCCCC;
+	background: #ccc;
+}
+
+h1 {
+	text-align: center;
 }
 
 #page {
@@ -30,4 +34,8 @@ body {
 #navBar li a:hover {
 	background-color: #111;
 	font-weight: bold;
+}
+
+#page img {
+	width: 100%;
 }
