@@ -25,6 +25,7 @@ $( document ).ready(function() {
     		url : "/movieSearch/" + name + "/" + year + "/" + category,
     		success: function(result){
     		    var table = $("#imdb_results")[0];
+    		    var newRows = "";
     			$.each(result.Search, function(i, movie){
     			    var request = "'/imdb_page/" + movie.imdbID + "'";
     			    var onClickAttr = "window.location.href = " + request;
@@ -38,8 +39,10 @@ $( document ).ready(function() {
     			    var rowEnd = "</tr>";
     			    
     			    var rowHTML = rowStart + posterCell + titleCell + yearCell + typeCell + rowEnd;
-    			    table.innerHTML += rowHTML;
+    			    newRows += rowHTML;
     			});
+    			
+    			table.innerHTML += newRows;
     		},
     		error : function(e) {
     			console.log("ERROR: ", e);
