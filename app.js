@@ -30,16 +30,13 @@ app.get("/movieSearch/:query/:year/:category",function(req, res){
         url = url + "&type=" + category;
     }
     url = url + apiKey;
-    console.log("url is " + url);
     request(url, function(error, repsonse, body) {
         var movieResults = JSON.parse(body);
-        console.log(movieResults);
         res.send(movieResults);
     })
 })
 
 app.get("/imdb_page/:id", function(req, res){
-    console.log("I got here!");
     var imdb_id = req.params.id;
     var url = moviAPIurl + "?i=" + imdb_id + "&plot=full" + apiKey;
     
