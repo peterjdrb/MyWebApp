@@ -17,10 +17,11 @@ app.get("/imdb_search", function(req, res) {
 });
 
 
-app.get("/movieSearch/:query/:year/:category",function(req, res){
+app.get("/movieSearch/:query/:year/:category/:page",function(req, res){
     var name = req.params.query;
     var year = req.params.year;
     var category = req.params.category;
+    var currentPage = req.params.page;
     
     var url = moviAPIurl + "?s=" + name;
     if (year !== "-1" && year !== undefined) {
@@ -29,6 +30,8 @@ app.get("/movieSearch/:query/:year/:category",function(req, res){
     if (category !== "any") {
         url = url + "&type=" + category;
     }
+    
+    url = url + "&page=" + currentPage;
     url = url + apiKey;
     request(url, function(error, repsonse, body) {
         var movieResults = JSON.parse(body);
