@@ -57,3 +57,7 @@
 	width: 50%;
 	height: 50%;
 }
+
+#imdb_results tr td:first-child {
+	text-align: center;
+}

@@ -42,7 +42,13 @@ $( document ).ready(function() {
             			    var onClickString = "onclick= \"" + onClickAttr;
             			    
             			    var rowStart = "<tr " + onClickString + ";\">";
-            			    var posterCell = "<td><img src='" + movie.Poster + "'></td>";
+            			    
+            			    if (movie.Poster === "N/A"){
+            			        var posterCell = "<td><h3>Image not <br>Available</h3></td>";
+            			    } else {
+            			        var posterCell = "<td><img src='" + movie.Poster + "'></td>";
+            			    }
+            			    
             			    var titleCell = "<td>" + movie.Title + "</td>";
             			    var yearCell = "<td>" + movie.Year + "</td>";
             			    var typeCell = "<td>" + movie.Type + "</td>";
