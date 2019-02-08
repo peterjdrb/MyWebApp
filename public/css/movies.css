@@ -28,34 +28,13 @@
 	text-align: left;
 }
 
-#imdb_results th {
-	padding: 5px 5px 5px 5px;
-	font-weight: bold;
-}
-
-#imdb_results {
-	margin-bottom: 0;
-	padding: 0;
-	border-collapse: collapse;
-}
-
-#imdb_results tr:hover {
+#indivResult:hover {
 	cursor: pointer;
 }
 
-#imdb_results tr:nth-of-type(even) {
-	background: #fff;
-	border: 1px solid #fff;
-}
-
-#imdb_results tr:nth-of-type(odd) {
-	background: #ccc;
-	border: 1px solid #ccc;
-}
-
-#imdb_results img {
-	width: 50%;
-	height: 50%;
+#imdb_results{
+	display:flex; 
+	flex-wrap: wrap;
 }
 
 #imdb_results tr td:first-child {
