@@ -7,21 +7,23 @@
     <h2><%= error.Error;%></h2>
 <% }; %>
 
-<form method="get", action="/imdb_results">
-    <label>Name:</label>
-    <input type="text", placeholder="name" name="name" required >
-    <label>Year:</label>
-    <input type="number" placeholder="year" name="filmYear" min="1900" max="<%= new Date().getFullYear()+5;%>">
-    <br>
-    <div id="Category">
-        <label>Category:</label> <br>
-        <input type="radio" name="category" value="any" checked="checked"><label>Any</label><br>
-        <input type="radio" name="category" value="movie"><label>Movie</label><br>
-        <input type="radio" name="category" value="series"><label>Series</label><br>
-        <input type="radio" name="category" value="episode"><label>Episode</label><br>
-    </div>
-    <input type="submit" value="Search">
-    
-</form>
+<label>Name:</label>
+<input type="text" placeholder="name" name="name" required >
+<label>Year:</label>
+<input type="number" placeholder="year" name="year" min="1900" max="<%= new Date().getFullYear()+5;%>">
+<br>
+<div id="Category">
+    <label>Category:</label> <br>
+    <input type="radio" name="category" value="any" checked="checked"><label>Any</label><br>
+    <input type="radio" name="category" value="movie"><label>Movie</label><br>
+    <input type="radio" name="category" value="series"><label>Series</label><br>
+    <input type="radio" name="category" value="episode"><label>Episode</label><br>
+</div>
+<input type="button" value="Search" id="searchSubmit">
 
+<table id="imdb_results">
+</table>
+<input type="button" value="More reuslts" id="searchNewPage">
+
+<script src="/JS/imdbSearchResults.js"></script>
 <% include partials/footer %>

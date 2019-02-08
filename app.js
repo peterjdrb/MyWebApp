@@ -16,31 +16,28 @@ app.get("/imdb_search", function(req, res) {
     res.render("imdb_search"); 
 });
 
-app.get("/imdb_results", function(req, res) {
-    var name = req.query.name;
-    var year = req.query.filmYear;
-    var category = req.query.category;
+
+app.get("/movieSearch/:query/:year/:category/:page",function(req, res){
+    var name = req.params.query;
+    var year = req.params.year;
+    var category = req.params.category;
+    var currentPage = req.params.page;
     
     var url = moviAPIurl + "?s=" + name;
-    if (year !== "") {
+    if (year !== "-1" && year !== undefined) {
         url = url +"&y=" + year;
     } 
     if (category !== "any") {
         url = url + "&type=" + category;
     }
-    url = url + apiKey;
     
-    request(url, function(error, response, body){
-        if(!error && response.statusCode === 200) {
-            var results = JSON.parse(body);
-            if (results.Response === "False"){
-                res.render("imdb_search", {error:results});
-            } else {
-                res.render("imdb_results", {results:results});
-            }
-        }
-    });
-});
+    url = url + "&page=" + currentPage;
+    url = url + apiKey;
+    request(url, function(error, repsonse, body) {
+        var movieResults = JSON.parse(body);
+        res.send(movieResults);
+    })
+})
 
 app.get("/imdb_page/:id", function(req, res){
     var imdb_id = req.params.id;
@@ -58,6 +55,6 @@ app.get("*", function(req, res) {
     res.send("Page not found :("); 
 });
 
-app.listen(port, function(){
+app.listen(process.env.PORT, process.env.IP, function(){
     console.log('localhost:3000/');
 });
