@@ -32,8 +32,8 @@
 	cursor: pointer;
 }
 
-#imdb_results{
-	display:flex; 
+#imdb_results {
+	display: flex;
 	flex-wrap: wrap;
 }
 

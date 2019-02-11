@@ -35,21 +35,17 @@ app.get("/movieSearch/:query/:year/:category/:page",function(req, res){
     url = url + apiKey;
     request(url, function(error, repsonse, body) {
         var movieResults = JSON.parse(body);
-        
-        movieResults.Search.forEach(function(movie){
-            url = "http://www.omdbapi.com/?i=" + movie.imdbID + apiKey;
-            request(url, function(error, repsonse, body) {
-                 var moviePlot = JSON.parse(body).Plot;
-                 movie.Plot = moviePlot;
-            })
-        })
         res.send(movieResults);
     })
 })
 
-app.get("/moviePlot/:imdbID", function(req, res){
-    console.log("Getting Plot");
-})
+// app.get("/moviePlot/:imdbID", function(req, res){
+//     var url = "http://www.omdbapi.com/?i=" + req.params.imdbID + apiKey;
+//     request(url, function(error, repsonse, body) {
+//          var moviePlot = JSON.parse(body).Plot;
+//          res.send(moviePlot);
+//     })
+// })
 
 app.get("/imdb_page/:id", function(req, res){
     var imdb_id = req.params.id;

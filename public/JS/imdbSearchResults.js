@@ -44,9 +44,10 @@ $( document ).ready(function() {
     	    var newResults = "";
     	    if (currentPage === 1) {
     	        rowDiv.innerHTML = "";
-    	        maxPageCount = Math.floor(movieResults.totalResults/10)+1;
+    	        maxPageCount = Math.ceil(movieResults.totalResults/10);
     	    }
     		$.each(movieResults.Search, function(i, movie){
+    		    console.log("movie is " + movie);
     		    var rowHTML = getRowHTML(movie);
     		    newResults += rowHTML;
     		});
@@ -61,12 +62,25 @@ $( document ).ready(function() {
         var onClickAttr = "window.location.href = " + request;
         var onClickString = "onclick= \"" + onClickAttr + "\"";
         if (movie.Poster !== "N/A"){
-            var rowHTML = "<div id='indivResult' class='col-md-3' " + onClickString + "><div class='thumbnail'><img src='" + movie.Poster + "'><div class='caption'>" + movie.Plot + "</div></div></div>";
+            var rowHTML = "<div id='indivResult' class='col-md-3' " + onClickString + "><div class='thumbnail'><img src='" + movie.Poster + "'><div class='caption'>" + movie.Title + "</div></div></div>";
+            return rowHTML;
         } else {
-            var rowHTML = "<div id='indivResult' class='col-md-3' " + onClickString + "><div class='thumbnail'><h1>" + movie.Title + "</h1><div class='caption'>" + movie.Plot + "</div></div></div>";
+            var rowHTML = "<div id='indivResult' class='col-md-3' " + onClickString + "><div class='thumbnail'><h3>" + movie.Title + "</h3><div class='caption'>" + movie.Title + "</div></div></div>";
+            return rowHTML;
+        //     console.log("Getting plot");
+        //     $.ajax({
+        // 		type : "GET",
+        // 		url : "/moviePlot/" + movie.imdbID,
+        // 		success: function(result){
+        // 		    var rowHTML = "<div id='indivResult' class='col-md-3' " + onClickString + "><div class='thumbnail'><h1>" + movie.Title + "</h1><div class='caption'>" + movie.Plot + "</div></div></div>";
+        // 	        return rowHTML;
+        // 		},
+        // 		error : function(e) {
+        // 			console.log("ERROR: ", e);
+        // 		}
+        // 	});	
+        	
         }
-        
-        return rowHTML;
     }
     
 });
