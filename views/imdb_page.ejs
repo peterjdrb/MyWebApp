@@ -16,9 +16,12 @@
             <p><strong>Genre:</strong> <%=results.Genre %></p>
             <p><strong>Runtime:</strong> <%=results.Runtime %></p>
             <p><strong>Staring:</strong> <%=results.Actors %></p><br>
-            <p><strong>Ratings:</strong></p> <% results.Ratings.forEach(function(rating){ %>
-                <p><%=rating.Source%> <%=rating.Value%> </p>
-            <% }); %>
+
+            <% if (Array.isArray(results.Ratings) && results.Ratings.length > 0) { %>
+                <p><strong>Ratings:</strong></p> <% results.Ratings.forEach(function(rating){ %>
+                    <p><%=rating.Source%> <%=rating.Value%> </p>
+                <% }); %>
+            <% } %>
             
             <% if (results.Plot !== "N/A") { %>
                 <h2><strong>Plot:</strong></h2>

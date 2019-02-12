@@ -63,11 +63,12 @@ $( document ).ready(function() {
         var request = "'/imdb_page/" + movie.imdbID + "'";
         var onClickAttr = "window.location.href = " + request;
         var onClickString = "onclick= \"" + onClickAttr + "\"";
+        var rowHTML = "";
         if (movie.Poster !== "N/A"){
-            var rowHTML = "<div id='indivResult' class='col-md-3' " + onClickString + "><div class='thumbnail'><img src='" + movie.Poster + "'><div class='caption'>" + movie.Title + "</div></div></div>";
+            rowHTML = "<div id='indivResult' class='col-md-3' " + onClickString + "><div class='thumbnail'><img src='" + movie.Poster + "'><div class='caption'>" + movie.Title + "</div></div></div>";
             return rowHTML;
         } else {
-            var rowHTML = "<div id='indivResult' class='col-md-3' " + onClickString + "><div class='thumbnail'><h3>" + movie.Title + "</h3><div class='caption'>" + movie.Title + "</div></div></div>";
+            rowHTML = "<div id='indivResult' class='col-md-3' " + onClickString + "><div class='thumbnail'><h3>" + movie.Title + "</h3><div class='caption'>" + movie.Title + "</div></div></div>";
             return rowHTML;
         }
     }
