@@ -5,11 +5,13 @@ $( document ).ready(function() {
         clearDivHTML();
     	getSearchResults();
     });
-    
-    $("#searchNewPage").bind("click", function(){
-    	getSearchResults();
-    	
+
+    $(window).scroll(function() {
+       if($(window).scrollTop() + $(window).height() == $(document).height()) {
+           getSearchResults();
+       }
     });
+
     
     function clearDivHTML (){
         $("#imdb_results")[0].innerHTML = "";
