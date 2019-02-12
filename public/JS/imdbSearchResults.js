@@ -2,7 +2,7 @@ $( document ).ready(function() {
     var currentPage = 0;
     var maxPageCount = 0;
     $("#searchSubmit").bind("click", function(){
-        clearTableHTML();
+        clearDivHTML();
     	getSearchResults();
     });
     
@@ -10,7 +10,7 @@ $( document ).ready(function() {
     	getSearchResults();
     });
     
-    function clearTableHTML (){
+    function clearDivHTML (){
         $("#imdb_results")[0].innerHTML = "";
         currentPage = 0;
     }
@@ -29,39 +29,7 @@ $( document ).ready(function() {
         		type : "GET",
         		url : "/movieSearch/" + name + "/" + year + "/" + category + "/" + currentPage,
         		success: function(result){
-        		    var table = $("#imdb_results")[0];
-        		    if (result.Response === "True") {
-            		    var newRows = "";
-            		    if (currentPage === 1) {
-            		        table.innerHTML = "<tr><th>Poster</th><th>Title</th><th>Year</th><th>Type</th></tr>";
-            		        maxPageCount = Math.floor(result.totalResults/10)+1;
-            		    }
-            			$.each(result.Search, function(i, movie){
-            			    var request = "'/imdb_page/" + movie.imdbID + "'";
-            			    var onClickAttr = "window.location.href = " + request;
-            			    var onClickString = "onclick= \"" + onClickAttr;
-            			    
-            			    var rowStart = "<tr " + onClickString + ";\">";
-            			    
-            			    if (movie.Poster === "N/A"){
-            			        var posterCell = "<td><h3>Image not <br>Available</h3></td>";
-            			    } else {
-            			        var posterCell = "<td><img src='" + movie.Poster + "'></td>";
-            			    }
-            			    
-            			    var titleCell = "<td>" + movie.Title + "</td>";
-            			    var yearCell = "<td>" + movie.Year + "</td>";
-            			    var typeCell = "<td>" + movie.Type + "</td>";
-            			    var rowEnd = "</tr>";
-            			    
-            			    var rowHTML = rowStart + posterCell + titleCell + yearCell + typeCell + rowEnd;
-            			    newRows += rowHTML;
-            			});
-            			
-            			table.innerHTML += newRows;
-            		} else {
-            		    table.innerHTML = "<h1>No Results Found</h1>";
-            		}
+        		    displayReuslts(result);
         		},
         		error : function(e) {
         			console.log("ERROR: ", e);
@@ -69,4 +37,36 @@ $( document ).ready(function() {
         	});	
     	} else {currentPage -= 1;}
     }
+    
+    function displayReuslts(movieResults){
+        var rowDiv = $("#imdb_results")[0];
+        if (movieResults.Response === "True") {
+    	    var newResults = "";
+    	    if (currentPage === 1) {
+    	        rowDiv.innerHTML = "";
+    	        maxPageCount = Math.ceil(movieResults.totalResults/10);
+    	    }
+    		$.each(movieResults.Search, function(i, movie){
+    		    var rowHTML = getRowHTML(movie);
+    		    newResults += rowHTML;
+    		});
+    		rowDiv.innerHTML += newResults;
+    	} else {
+    	    rowDiv.innerHTML = "<h1>No Results Found</h1>";
+    	}
+    }
+    
+    function getRowHTML(movie){
+        var request = "'/imdb_page/" + movie.imdbID + "'";
+        var onClickAttr = "window.location.href = " + request;
+        var onClickString = "onclick= \"" + onClickAttr + "\"";
+        if (movie.Poster !== "N/A"){
+            var rowHTML = "<div id='indivResult' class='col-md-3' " + onClickString + "><div class='thumbnail'><img src='" + movie.Poster + "'><div class='caption'>" + movie.Title + "</div></div></div>";
+            return rowHTML;
+        } else {
+            var rowHTML = "<div id='indivResult' class='col-md-3' " + onClickString + "><div class='thumbnail'><h3>" + movie.Title + "</h3><div class='caption'>" + movie.Title + "</div></div></div>";
+            return rowHTML;
+        }
+    }
+    
 });
