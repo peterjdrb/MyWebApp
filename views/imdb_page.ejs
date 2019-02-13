@@ -1,0 +1,34 @@
+<%include partials/header %>
+<link rel="stylesheet" href="/css/movies.css">
+
+<h1><%=results.Title %></h1>
+<div class="container">
+    <div class="row">
+        <% if (results.Poster !== "N/A") { %>
+            <div class="col-lg-4 pink col-md-4 col-sm-6 .col-xs-6">
+            
+                <img src="<%=results.Poster%>">
+            </div>
+        <% } %>
+        <div class="col-lg-8 col-md-8 col-sm-6 .col-xs-6">
+            <p><strong>Released:</strong> <%=results.Released %></p>
+            <p><strong>Rated:</strong> <%=results.Rated %></p>
+            <p><strong>Genre:</strong> <%=results.Genre %></p>
+            <p><strong>Runtime:</strong> <%=results.Runtime %></p>
+            <p><strong>Staring:</strong> <%=results.Actors %></p><br>
+
+            <% if (Array.isArray(results.Ratings) && results.Ratings.length > 0) { %>
+                <p><strong>Ratings:</strong></p> <% results.Ratings.forEach(function(rating){ %>
+                    <p><%=rating.Source%> <%=rating.Value%> </p>
+                <% }); %>
+            <% } %>
+            
+            <% if (results.Plot !== "N/A") { %>
+                <h2><strong>Plot:</strong></h2>
+                <p><%=results.Plot %></p>
+            <% } %>
+        </div>
+    </div>
+</div>
+
+<%include partials/footer %>

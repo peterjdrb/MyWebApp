@@ -1,0 +1,42 @@
+#page input {
+    margin-bottom: 5px;
+    margin-right: 24px;
+    border: 1px solid #aaa;
+}
+
+#page p {
+	margin: 0 0;
+}
+
+#page input[type=radio] {
+    margin-bottom: 5px;
+    margin-right: 5px;
+    border: 1px solid #aaa;
+}
+
+#page input[type=text] {
+	width: 200px;
+}
+
+#page input[type=number] {
+	width: 50px;
+}
+
+#Category label {
+	display: inline-block;
+	width: 60px;
+	text-align: left;
+}
+
+#indivResult:hover {
+	cursor: pointer;
+}
+
+#imdb_results {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+#imdb_results tr td:first-child {
+	text-align: center;
+}
