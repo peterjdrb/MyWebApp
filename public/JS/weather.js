@@ -34,11 +34,10 @@ $( document ).ready(function() {
       var locationList = $("#locationList")[0];
       var listDiv = document.getElementById('locationList');
       var ul=document.createElement('ul');     
-
+      ul.setAttribute("id", "weatherResults");
       for (var i in locations) {
         var location = locations[i];
         var li=document.createElement('li');
-        li.setAttribute("id", "weatherResults");
         li.innerHTML = location.name;   // Use innerHTML to set the text
         li.addEventListener('click', getWeather.bind(this, location));
         ul.appendChild(li);
