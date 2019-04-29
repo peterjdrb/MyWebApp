@@ -31,8 +31,8 @@ $( document ).ready(function() {
     
     //get List of possible locations and display in UI
     function displayList(locations) {
-      var locationList = $("#locationList")[0];
       var listDiv = document.getElementById('locationList');
+      listDiv.innerHTML = '';
       var ul=document.createElement('ul');     
       ul.setAttribute("id", "weatherResults");
       for (var i in locations) {
