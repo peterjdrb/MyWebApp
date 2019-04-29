@@ -3,7 +3,9 @@ const app = express();
 const request = require("request");
 const port = 3000;
 const moviAPIurl = "http://www.omdbapi.com/";
-const apiKey = "&apikey=thewdb";
+const movieApiKey = process.env.movieAPI;
+const weatherApiKey = process.env.weatherAPI;
+const weatherUrl = "https://api.apixu.com/v1/";
 
 app.set("view engine", "ejs");
 app.use(express.static("public"));
@@ -31,16 +33,16 @@ app.get("/movieSearch/:query/:year/:category/:page",function(req, res){
     }
     
     url = url + "&page=" + currentPage;
-    url = url + apiKey;
+    url = url + movieApiKey;
     request(url, function(error, repsonse, body) {
         var movieResults = JSON.parse(body);
         res.send(movieResults);
-    })
-})
+    });
+});
 
 app.get("/imdb_page/:id", function(req, res){
     var imdb_id = req.params.id;
-    var url = moviAPIurl + "?i=" + imdb_id + "&plot=full" + apiKey;
+    var url = moviAPIurl + "?i=" + imdb_id + "&plot=full" + movieApiKey;
     
     request(url, function(error, response, body){
         if(!error && response.statusCode === 200) {
@@ -50,8 +52,21 @@ app.get("/imdb_page/:id", function(req, res){
     });
 });
 
+app.get("/weather", function(req, res){
+    res.render("weather");
+});
+
+app.get("/weather/search/:userLocation", function(req, res){
+    var location = req.params.userLocation;
+    var url = weatherUrl + "search.json?" + weatherApiKey + "&q=" + location;
+    request(url, function(error, repsonse, body) {
+        var results = JSON.parse(body);
+        res.send(results);
+    });
+});
+
 app.get("*", function(req, res) {
-    res.send("Page not found :("); 
+    res.send("Page not found"); 
 });
 
 app.listen(port, function(){
