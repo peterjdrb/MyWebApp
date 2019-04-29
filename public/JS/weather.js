@@ -46,8 +46,22 @@ $( document ).ready(function() {
     }
 
     //When a locaiton is selected, then get the weather data
-    function getWeather(event) {
-      console.log(event);
+    function getWeather(location) {
+      document.getElementById("weatherInput").value = location.name;
+      var listDiv = document.getElementById('locationList');
+      listDiv.innerHTML = '';
+
+      //call serverside function to ge weather data
+      $.ajax({
+        type : "GET",
+        url : "/weather/data/" + location.url,
+        success: function(result){
+          console.log(result);
+        },
+        error : function(e) {
+          console.log("ERROR: ", e);
+        }
+      }); 
     }
 
     
