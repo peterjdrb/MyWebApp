@@ -1,3 +1,13 @@
+#locationSearch {
+    left: 0;
+    right: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-size:100%;
+    background:white;
+}
+
 #weatherResults{
     position: absolute;
     width: 100%;
@@ -8,16 +18,32 @@
 
 #weatherInput {
     border: 0;
-    padding: 10px;
+    padding: 15px;
 }
 
 .searchItem {
     background: white;
-    padding-left: 10px;
+    padding-left: 15px;
     padding-top: 10px;
     padding-bottom: 10px;
 }
 
 .searchItem:hover {
     cursor: pointer;
+}
+
+#displayWeather > h1{
+    width: inherit;
+    position: absolute;
+}
+
+.currentLocationWidth {
+    width: 20%;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+}
+
+#weatherIcon img{
+    width: 100%;
+    height: auto;
 }

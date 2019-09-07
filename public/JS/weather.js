@@ -7,6 +7,16 @@ $( document ).ready(function() {
   function displayWeather(weatherData) {
     console.log("weather data returned for " + weatherData.location.name  + ", " + weatherData.location.region + " is as below");
     console.log(weatherData);
+
+    var locationDiv = document.getElementById("location");
+    var iconDiv = document.getElementById("weatherIcon");
+    var tempDiv = document.getElementById("temperature");
+    var windSpeedDiv = document.getElementById("windSpeed");
+    var iconURL = weatherData.current.condition.icon
+    iconURL = iconURL.replace("64x64", "128x128");
+
+    locationDiv.innerHTML = "<h1>" + weatherData.location.name + ", " + weatherData.location.region + "</h1>"
+    iconDiv.innerHTML = "<img src=" + iconURL + " alt=" + weatherData.current.condition.text + ">";
   }
 
   //When a locaiton is selected, then get the weather data
