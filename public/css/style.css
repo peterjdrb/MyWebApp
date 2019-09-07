@@ -1,14 +1,10 @@
 body {
-	margin: 0;
+	margin-left: 2px;
 	background: #ccc;
 }
 
 h1 {
 	text-align: center;
-}
-
-#page {
-	margin-left: 10px;
 }
 
 #navBar ul {
