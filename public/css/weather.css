@@ -6,6 +6,11 @@
     padding: 0;
 }
 
+#weatherInput {
+    border: 0;
+    padding: 10px;
+}
+
 .searchItem {
     background: white;
     padding-left: 10px;

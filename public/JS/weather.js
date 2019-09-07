@@ -5,7 +5,7 @@ $( document ).ready(function() {
   var userInput = $("#weatherInput");
   
   function displayWeather(weatherData) {
-    console.log("weather data returned is as below");
+    console.log("weather data returned for " + weatherData.location.name  + ", " + weatherData.location.region + " is as below");
     console.log(weatherData);
   }
 
