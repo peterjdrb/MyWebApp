@@ -3,19 +3,24 @@ $( document ).ready(function() {
   var typingTimer;                //timer identifier
   var doneTypingInterval = 500;  //time in ms, 5 second for example
   var userInput = $("#weatherInput");
-    
-  //user is "finished typing," do something
-  function getListOfCountries () {
+  
+  //When a locaiton is selected, then get the weather data
+  function getWeather(location) {
+    document.getElementById("weatherInput").value = location.name;
+    var listDiv = document.getElementById("locationList");
+    listDiv.innerHTML = "";
+
+    //call serverside function to ge weather data
     $.ajax({
       type : "GET",
-      url : "/weather/search/" + userInput.val(),
+      url : "/weather/data/" + location.url,
       success: function(result){
-        displayList(result);
+        console.log(result);
       },
       error : function(e) {
         console.log("ERROR: ", e);
       }
-    });	
+    }); 
   }
 
   //get List of possible locations and display in UI
@@ -42,23 +47,18 @@ $( document ).ready(function() {
     }
   }
 
-  //When a locaiton is selected, then get the weather data
-  function getWeather(location) {
-    document.getElementById("weatherInput").value = location.name;
-    var listDiv = document.getElementById("locationList");
-    listDiv.innerHTML = "";
-
-    //call serverside function to ge weather data
+  //user is "finished typing," do something
+  function getListOfCountries () {
     $.ajax({
       type : "GET",
-      url : "/weather/data/" + location.url,
+      url : "/weather/search/" + userInput.val(),
       success: function(result){
         console.log(result);
       },
       error : function(e) {
         console.log("ERROR: ", e);
       }
-    }); 
+    });	
   }
 
     //on keyup, start the countdown
