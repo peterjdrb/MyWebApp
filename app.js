@@ -70,7 +70,6 @@ app.get("/weather/data/:location", function(req, res){
     var url = weatherUrl + "current.json?" + weatherApiKey + "&q=" + location;
     request(url, function(error, repsonse, body) {
         var results = JSON.parse(body);
-        console.log(results);
         res.send(results);
     });
 });
