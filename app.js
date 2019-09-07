@@ -41,8 +41,8 @@ app.get("/movieSearch/:query/:year/:category/:page",function(req, res){
 });
 
 app.get("/imdb_page/:id", function(req, res){
-    var imdb_id = req.params.id;
-    var url = moviAPIurl + "?i=" + imdb_id + "&plot=full" + movieApiKey;
+    var imdbId = req.params.id;
+    var url = moviAPIurl + "?i=" + imdbId + "&plot=full" + movieApiKey;
     
     request(url, function(error, response, body){
         if(!error && response.statusCode === 200) {
