@@ -4,6 +4,11 @@ $( document ).ready(function() {
   var doneTypingInterval = 500;  //time in ms, 5 second for example
   var userInput = $("#weatherInput");
   
+  function displayWeather(weatherData) {
+    console.log("weather data returned is as below");
+    console.log(weatherData);
+  }
+
   //When a locaiton is selected, then get the weather data
   function getWeather(location) {
     document.getElementById("weatherInput").value = location.name;
@@ -15,7 +20,7 @@ $( document ).ready(function() {
       type : "GET",
       url : "/weather/data/" + location.url,
       success: function(result){
-        console.log(result);
+        displayWeather(result);
       },
       error : function(e) {
         console.error("ERROR: ", e);
@@ -47,13 +52,13 @@ $( document ).ready(function() {
     }
   }
 
-  //user is "finished typing," do something
+  //user is finished typing, go and get list of potential locations
   function getListOfCountries () {
     $.ajax({
       type : "GET",
       url : "/weather/search/" + userInput.val(),
       success: function(result){
-        console.log(result);
+        displayList(result);
       },
       error : function(e) {
         console.error("ERROR: ", e);
