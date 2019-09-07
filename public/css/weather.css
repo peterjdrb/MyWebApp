@@ -1,4 +1,18 @@
 #weatherResults{
+    position: absolute;
+    width: 100%;
     list-style-type: none;
     list-style: none;
+    padding: 0;
+}
+
+.searchItem {
+    background: white;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.searchItem:hover {
+    cursor: pointer;
 }
