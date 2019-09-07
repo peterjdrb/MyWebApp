@@ -31,18 +31,26 @@ $( document ).ready(function() {
     
     //get List of possible locations and display in UI
     function displayList(locations) {
+      //Empty any existing results
       var listDiv = document.getElementById('locationList');
       listDiv.innerHTML = '';
+
+      //Create a new list to hold the search results
       var ul=document.createElement('ul');     
       ul.setAttribute("id", "weatherResults");
-      for (var i in locations) {
-        var location = locations[i];
-        var li=document.createElement('li');
-        li.innerHTML = location.name;   // Use innerHTML to set the text
-        li.addEventListener('click', getWeather.bind(this, location));
-        ul.appendChild(li);
+
+      if (locations !== "Page not found") {
+        //For each result, generate the appropriate li tag.
+        for (var i in locations) {
+          var location = locations[i];
+          var li=document.createElement('li');
+          li.className += "searchItem";
+          li.innerHTML = location.name;   // Use innerHTML to set the text
+          li.addEventListener('click', getWeather.bind(this, location));
+          ul.appendChild(li);
+        }
+        listDiv.appendChild(ul);
       }
-      listDiv.appendChild(ul);
     }
 
     //When a locaiton is selected, then get the weather data
