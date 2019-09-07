@@ -18,7 +18,7 @@ $( document ).ready(function() {
         console.log(result);
       },
       error : function(e) {
-        console.log("ERROR: ", e);
+        console.error("ERROR: ", e);
       }
     }); 
   }
@@ -56,7 +56,7 @@ $( document ).ready(function() {
         console.log(result);
       },
       error : function(e) {
-        console.log("ERROR: ", e);
+        console.error("ERROR: ", e);
       }
     });	
   }
